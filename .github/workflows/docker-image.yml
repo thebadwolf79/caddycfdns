@@ -21,7 +21,7 @@ jobs:
         CR_PAT: ${{ secrets.CR_PAT }}
         
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag Dockerfile:latest$(date +%s)
+      run: docker build . --file Dockerfile --tag dockerfile:latest$(date +%s)
     
     - name: Docker Push
       run: docker push caddycfdns:latest
