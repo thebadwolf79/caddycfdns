@@ -14,5 +14,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: docker login
+      run:
+        echo $CR_PAT | docker login ghcr.io -u thebadwolf79 --password-stdin
+      env:
+        CR_PAT: ${{ secrets.CR_PAT }}
+        
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag caddycfdns:$(date +%s)
+           
+    - name: Docker Push
+      run: docker push thebadwolf79/caddycfdns:latest
