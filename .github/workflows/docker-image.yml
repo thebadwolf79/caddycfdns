@@ -24,4 +24,4 @@ jobs:
       run: docker build . --file Dockerfile --tag caddycfdns:$(date +%s)
            
     - name: Docker Push
-      run: docker push . thebadwolf79/caddycfdns:latest
+      run: docker push -a caddycfdns:latest
