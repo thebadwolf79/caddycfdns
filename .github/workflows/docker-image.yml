@@ -69,4 +69,4 @@ jobs:
           CR_PAT: ${{ secrets.CR_PAT }}
             
       - name: Docker Push
-        run: docker push thebadwolf79/caddycfdns:main
+        run: docker push caddycfdns:main
