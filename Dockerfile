@@ -1,19 +1,8 @@
-version: "3.7"
+FROM caddy:latest-builder AS builder
 
-services:
-  caddy:
-    image: caddy:<version>
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - $PWD/Caddyfile:/etc/caddy/Caddyfile
-      - $PWD/site:/srv
-      - caddy_data:/data
-      - caddy_config:/config
+RUN xcaddy build \
+    --with github.com/caddy-dns/cloudflare 
 
-volumes:
-  caddy_data:
-    external: true
-  caddy_config:
+FROM caddy:latest
+
+COPY --from=builder /usr/bin/caddy /usr/bin/caddy
