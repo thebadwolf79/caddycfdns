@@ -21,7 +21,7 @@ jobs:
         CR_PAT: ${{ secrets.CR_PAT }}
         
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag caddycfdns:$(date +%s)
+      run: docker build -t thebadwolf79/caddycfdns .
     
     - name: Docker Push
       run: docker push caddycfdns
